@@ -59,20 +59,40 @@ class LinkedList {
         if(typeof index !== "number") {
             return 
         }
+
         if(index > this.length) {
             return
         }
-        let currentHead = this.head
+
+        let currentNode = this.head
+
+        // Giải thích rõ chỗ lặp như này để hiểu!
+        // Chỉ gán giá trị bộ nhớ (pointer) cho một biến tạm là currentNode (Không có gán gì cả nên không ảnh hưởng đến this.head trong trường hợp này!)
         for(let i = 0; i < index - 1; i++) {
-            currentHead = this.head.next
+            currentNode = this.head.next
         }
+        // O(n): Timecomplexity
+        // O(n): Spacecomplexity
         //Check for proper parameters;
+
         const newNode = {
             value: value,
-            next: currentHead
+            next: currentNode.next
         }
-        this.head.next = newNode
+
+        currentNode.next = newNode
         return this
+    }
+
+    traverseToIndex(index) {
+        //Check parameters
+        let counter = 0;
+        let currentNode = this.head;
+        while(counter !== index){
+            currentNode = currentNode.next;
+            counter++;
+        }
+        return currentNode;
     }
 
   }
@@ -82,6 +102,8 @@ class LinkedList {
   myLinkedList.append(16);
   myLinkedList.prepend(32);
   myLinkedList.prepend(41);
-  myLinkedList.insert(2, 99);
-  console.log("my linkedList", myLinkedList);
+  myLinkedList.insert(2, 99); // Đang bị bí ideas về vấn đề insert này!
+  // 41 -> 32 -> 10 -> 5 -> 16
+  // 41 -> 32 -> [99] -> 10 -> 5 -> 16
+//   console.log("my linkedList", myLinkedList);
   

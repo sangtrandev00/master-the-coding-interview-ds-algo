@@ -48,16 +48,20 @@ class LinkedList {
         next: null
       }
       const leader = this.traverseToIndex(index-1);
+      console.log("leader", leader);
       const holdingPointer = leader.next;
+      console.log("holding pointer", holdingPointer);
       leader.next = newNode;
       newNode.next = holdingPointer;
+      console.log("leader", leader);
+      console.log("head", this.head);
       this.length++;
       return this.printList();
     }
     traverseToIndex(index) {
       //Check parameters
       let counter = 0;
-      let currentNode = this.head;
+      let currentNode = this.head; // Gán cả vùng nhớ (reference type!)
       while(counter !== index){
         currentNode = currentNode.next;
         counter++;
@@ -79,8 +83,8 @@ class LinkedList {
   myLinkedList.append(16);
   myLinkedList.prepend(1);
   myLinkedList.insert(2, 99);
-  myLinkedList.insert(20, 88);
-  myLinkedList.remove(2);
+  // myLinkedList.insert(20, 88);
+  // myLinkedList.remove(2);
   
   
   
