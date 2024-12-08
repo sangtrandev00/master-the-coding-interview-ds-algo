@@ -81,7 +81,29 @@ class LinkedList {
         }
 
         currentNode.next = newNode
+        this.length++
         return this
+    }
+
+    remove(index) {
+        // Make sure index is a number and less than length
+        if(typeof index !== "number") {
+            return 
+        }
+        let removed = null
+        if(index >= this.length - 1) {
+            const currentNode = this.traverseToIndex(index - 2)
+            removed = currentNode.next
+            currentNode.next = null
+            this.tail = currentNode
+        }else {
+            const currentNode = this.traverseToIndex(index - 1)
+            removed = currentNode.next
+            currentNode.next = currentNode.next.next
+        }
+
+        this.length --
+        return removed
     }
 
     traverseToIndex(index) {
@@ -93,6 +115,13 @@ class LinkedList {
             counter++;
         }
         return currentNode;
+    }
+    removeFront() {
+
+    }
+
+    removeTail(){
+
     }
 
   }
@@ -106,4 +135,7 @@ class LinkedList {
   // 41 -> 32 -> 10 -> 5 -> 16
   // 41 -> 32 -> [99] -> 10 -> 5 -> 16
 //   console.log("my linkedList", myLinkedList);
+console.log("my linkedList", myLinkedList);
+// console.log("my linkedList", myLinkedList.remove(1));
+console.log("my linkedList after remove", myLinkedList.remove(3));
   
