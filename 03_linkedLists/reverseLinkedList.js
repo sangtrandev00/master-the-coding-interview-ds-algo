@@ -75,6 +75,8 @@ class LinkedList {
       this.length--;
       return this.printList();
     }
+
+    // Xem lại tại sao!
     reverse() {
       if (!this.head.next) {
         return this.head;

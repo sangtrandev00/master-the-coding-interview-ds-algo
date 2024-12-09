@@ -1,16 +1,16 @@
 // Create the below linked list:
-// myLinkedList = {
-//   head: {
-//     value: 10
-//     next: {
-//       value: 5
-//       next: {
-//         value: 16
-//         next: null
-//       }
-//     }
-//   }
-// };
+const myLinkedListNode = {
+  head: {
+    value: 10,
+    next: {
+      value: 5,
+      next: {
+        value: 16,
+        next: null
+      }
+    }
+  }
+};
 
 class LinkedList {
     constructor(value) {
@@ -18,17 +18,17 @@ class LinkedList {
         value: value,
         next: null
       };
-      this.tail = this.head;
+      this.tail = this.head; // Reference
       this.length = 1;
     }
     append(value) {
       //Code here
-      const newHead = {
+      const newNode = {
         value: value,
         next: null
       }
-      this.tail.next = newHead;
-      this.tail = newHead
+      this.tail.next = newNode;
+      this.tail = newNode
       this.length ++;
       return this
     }
@@ -60,7 +60,8 @@ class LinkedList {
             return 
         }
 
-        if(index > this.length) {
+        if(index >= this.length) {
+            this.append(value)
             return
         }
 
@@ -116,12 +117,14 @@ class LinkedList {
         }
         return currentNode;
     }
-    removeFront() {
 
+    removeFront() {
+        this.head = this.head.next; // O(1)
+        this.length --
     }
 
     removeTail(){
-
+        this.remove(this.length - 1) // O(n) --> Hiện tại vì linkedlist của mình là một chiều nên phải chấp nhận như vậy
     }
 
   }
@@ -132,10 +135,10 @@ class LinkedList {
   myLinkedList.prepend(32);
   myLinkedList.prepend(41);
   myLinkedList.insert(2, 99); // Đang bị bí ideas về vấn đề insert này!
-  // 41 -> 32 -> 10 -> 5 -> 16
+//   // 41 -> 32 -> 10 -> 5 -> 16
   // 41 -> 32 -> [99] -> 10 -> 5 -> 16
 //   console.log("my linkedList", myLinkedList);
 console.log("my linkedList", myLinkedList);
 // console.log("my linkedList", myLinkedList.remove(1));
-console.log("my linkedList after remove", myLinkedList.remove(3));
+// console.log("my linkedList after remove", myLinkedList.remove(3));
   

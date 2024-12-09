@@ -76,6 +76,10 @@ class LinkedList {
       this.length--;
       return this.printList();
     }
+
+    reverse() {
+      
+    }
   }
   
   let myLinkedList = new LinkedList(10);
@@ -83,6 +87,7 @@ class LinkedList {
   myLinkedList.append(16);
   myLinkedList.prepend(1);
   myLinkedList.insert(2, 99);
+  console.log("myLinkedList.printList(): ", myLinkedList.printList())
   // myLinkedList.insert(20, 88);
   // myLinkedList.remove(2);
   
